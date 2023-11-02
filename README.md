@@ -12,6 +12,7 @@ M.m_map=={ (1,'B'), (3,'A') },
 Then M represents the mapping
 
 ...
+
 -2 -> 'A'
 
 -1 -> 'A'
@@ -27,4 +28,5 @@ Then M represents the mapping
 4 -> 'A'
 
 5 -> 'A'
+
 ...
