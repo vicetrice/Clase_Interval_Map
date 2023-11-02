@@ -33,10 +33,10 @@ public:
 		if (!m_map.empty())
 		{
 			const bool key_exist = m_map.find(keyBegin) != m_map.end();
-			const bool is_canonic = m_map.rbegin()->second != val;
+			const bool is_canonic = std::prev(m_map.rbegin())->second != val;
 			if (keyEnd > std::prev(m_map.lower_bound(keyBegin))->first)
 			{
-				m_map.erase(m_map.upper_bound(keyBegin), m_map.end());
+				m_map.erase(m_map.upper_bound(keyBegin), m_map.upper_bound(keyEnd));
 			}
 			if (!is_canonic && !key_exist)
 			{
@@ -128,11 +128,8 @@ public:
 int main()
 {
 	interval_map<int, char> m{'M'};
-	m.assign(3, 6, 'B');
-
-	m.assign(2, 5, 'C');
-
-
+	m.assign(1, 5, 'B');
+    m.assign(2, 3, 'B');
 
 	std::cout << m;
 }
