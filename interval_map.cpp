@@ -34,6 +34,10 @@ public:
 		{
 			const bool key_exist = m_map.find(keyBegin) != m_map.end();
 			const bool is_canonic = m_map.rbegin()->second != val;
+			if (keyEnd > std::prev(m_map.lower_bound(keyBegin))->first)
+			{
+				m_map.erase(m_map.upper_bound(keyBegin), m_map.end());
+			}
 			if (!is_canonic && !key_exist)
 			{
 				return;
@@ -42,10 +46,6 @@ public:
 			{
 				// The key exists, and the map is canonical, so we simply update the value associated with the key.
 				m_map[keyBegin] = val;
-				if (keyEnd > m_map.rbegin()->first)
-				{
-					m_map.erase(m_map.upper_bound(keyBegin), m_map.end());
-				}
 			}
 			else if (is_canonic)
 			{
@@ -66,8 +66,6 @@ public:
 			{
 				m_map.emplace(keyEnd, std::prev(m_map.lower_bound(keyBegin))->second);
 			}
-
-			// Throw an exception if necessary
 		}
 		else if (val != m_valBegin)
 		{
@@ -129,9 +127,12 @@ public:
 
 int main()
 {
-	interval_map<int, char> prueba{'M'};
-	prueba.assign(1, 6, 'B');
-	prueba.assign(7, 9, 'K');
-	prueba.assign(40, 1000000, 'A');
-	std::cout << prueba;
+	interval_map<int, char> m{'M'};
+	m.assign(3, 6, 'B');
+
+	m.assign(2, 5, 'C');
+
+
+
+	std::cout << m;
 }
