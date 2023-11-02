@@ -40,7 +40,12 @@ public:
 			}
 			if (!is_canonic && !key_exist)
 			{
-				return;
+				if (m_map.empty())
+				{
+					m_map.emplace(keyBegin, val);
+				}
+				else
+					return;
 			}
 			else if (is_canonic && key_exist)
 			{
@@ -128,8 +133,8 @@ public:
 int main()
 {
 	interval_map<int, char> m{'M'};
+	m.assign(2, 3, 'B');
 	m.assign(1, 5, 'B');
-    m.assign(2, 3, 'B');
 
 	std::cout << m;
 }
