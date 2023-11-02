@@ -5,7 +5,8 @@ interval_map<K, V> is implemented on top of std::map. For more information on st
 
 Each key-value-pair (k,v) in interval_map<K,V>::m_map means that the value v is associated with all keys from k (including) to the next key (excluding) in m_map. The member interval_map<K,V>::m_valBegin holds the value that is associated with all keys less than the first key in m_map.
 
-Example: Let M be an instance of interval_map<int,char> where
+## Example: 
+Let M be an instance of interval_map<int,char> where
 
 M.m_valBegin=='A',
 M.m_map=={ (1,'B'), (3,'A') },
