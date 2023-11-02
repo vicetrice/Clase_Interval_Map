@@ -13,11 +13,18 @@ Then M represents the mapping
 
 ...
 -2 -> 'A'
+
 -1 -> 'A'
+
 0 -> 'A'
+
 1 -> 'B'
+
 2 -> 'B'
+
 3 -> 'A'
+
 4 -> 'A'
+
 5 -> 'A'
 ...
